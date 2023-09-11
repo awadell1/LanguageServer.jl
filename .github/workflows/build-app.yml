@@ -22,6 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: julia-actions/setup-julia@v1
+    - uses: julia-actions/cache@v1
     - uses: julia-actions/julia-buildpkg@v1
     - name: Get the version number
       shell: bash
@@ -31,7 +32,11 @@ jobs:
         echo "LS_VERSION=$LS_VERSION"
     - name: build julia-lsp app
       run: julia contrib/julia-lsp/compile.jl
+    - name: zip application files
+      shell: bash
+      run: |
+        cd contrib/julia-lsp/build
+        zip -r julia-lsp-v${{ env.LS_VERSION }}-${{ matrix.build }}.zip *
     - uses: actions/upload-artifact@v3
       with:
-        name: julia-lsp-v${{ env.LS_VERSION }}-${{ matrix.build }}
-        path: ${{ github.workspace }}
+        path: contrib/julia-lsp/build/julia-lsp-v*.zip
