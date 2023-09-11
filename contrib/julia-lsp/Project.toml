@@ -1,0 +1,7 @@
+[deps]
+LanguageServer = "2b0e0bc5-e4fd-59b4-8912-456d1b03d8d7"
+MethodAnalysis = "85b6ec6f-f7df-4429-9514-a64bcd9ee824"
+PackageCompiler = "9b87118b-4619-50d2-8e1e-99f35a4d4d9d"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+PkgCacheInspector = "a408fb95-4068-4cfa-a7f1-12fd503bd86c"
+SymbolServer = "cf896787-08d5-524d-9de7-132aaa0cb996"
