@@ -24,9 +24,11 @@ jobs:
     - uses: julia-actions/setup-julia@v1
     - uses: julia-actions/julia-buildpkg@v1
     - name: Get the version number
+      shell: bash
       run: |
         LS_VERSION=$(julia --project -e 'using LanguageServer; println(pkgversion(LanguageServer))')
         echo "LS_VERSION=$LS_VERSION" >> $GITHUB_ENV
+        echo "LS_VERSION=$LS_VERSION"
     - name: build julia-lsp app
       run: julia contrib/julia-lsp/compile.jl
     - uses: actions/upload-artifact@v3
