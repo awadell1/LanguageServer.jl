@@ -1,4 +1,4 @@
-name: Build julia-lsp app with PackageCompiler
+name: Build julia-lsp App
 on:
   push:
     branches:
@@ -22,9 +22,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: julia-actions/setup-julia@v1
+    - uses: julia-actions/julia-buildpkg@v1
     - name: Get the version number
       run: |
-        LS_VERSION=$(julia --project -e 'using LanguageServer; println(pkgversion(LanguageServer))'))
+        LS_VERSION=$(julia --project -e 'using LanguageServer; println(pkgversion(LanguageServer))')
         echo "LS_VERSION=$LS_VERSION" >> $GITHUB_ENV
     - name: build julia-lsp app
       run: julia contrib/julia-lsp/compile.jl
